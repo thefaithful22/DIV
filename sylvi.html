@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #chat-container {
+      height: 400px;
+      width: 300px;
+      border: 1px solid #000;
+      padding: 10px;
+      overflow: auto;
+    }
+
+    .chat-message {
+      opacity: 0;
+      animation: fadeIn 2s linear forwards;
+      margin: 10px 0;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div id="chat-container">
+    <div class="chat-message" id="message-1"></div>
+    <div class="chat-message" id="message-2"></div>
+    <div class="chat-message" id="message-3"></div>
+    <div class="chat-message" id="message-4"></div>
+  </div>
+
+  <script>
+    const messages = [
+      {
+        role: 'Customer',
+        text: "Hey there, I'm looking for a dress for a summer wedding. Any recommendations?",
+      },
+      {
+        role: 'Sylvi AI',
+        text: "Hi! Absolutely, I'd love to help you find the perfect dress. How about something light and breezy? We have a lovely floral maxi dress that's been popular for summer weddings. Would you like to see it?",
+      },
+      {
+        role: 'Customer',
+        text: "That sounds perfect! Can I see it?",
+      },
+      {
+        role: 'Sylvi AI',
+        text: "Absolutely! Here's the link to the floral maxi dress on our website: www.boutique.com/floral-maxi-dress. Take a look and let me know if you have any questions!",
+      },
+    ];
+
+    let counter = 1;
+    messages.forEach((message, index) => {
+      setTimeout(() => {
+        const chatMessage = document.getElementById(`message-${counter}`);
+        chatMessage.textContent = `${message.role}: ${message.text}`;
+        chatMessage.style.opacity = '1';
+        counter += 1;
+      }, 3000 * index);
+    });
+  </script>
+</body>
+</html>
